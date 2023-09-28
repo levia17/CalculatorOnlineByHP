@@ -159,56 +159,55 @@ function curVar() {
 curVar();
 
 // Chức năng của các phím
-// equal.addEventListener("click", btn);
-// function btnEqual() {
-//   var result = 0;
-//   for (var i = 0; i < dataCal.length; i++) {
-//     // console.log(dataCal[i]);
-//     if (dataCal[i].textContent === "=") {
+for (var i = 0; i < allBtn.length; i++) {
+  allBtn[i].addEventListener("click", eventClickCal);
+  function eventClickCal() {
+    if (this.textContent === "CLEAR") {
+      valueCal.innerHTML = "_";
+    } else if (this.textContent === "=") {
+      if (valueCal.textContent === "_") {
+        alert("Vui lòng nhập dữ liệu");
+      } else {
+        var result = eval(valueCal.textContent);
+        valueCal.innerHTML = `${result}`;
+      }
+    } else {
+      if (valueCal.textContent === "_") {
+        var valueCalReplaced = valueCal.textContent.replace("_",this.textContent);
+        // console.log(valueCalReplaced)
+        valueCal.innerHTML = `${valueCalReplaced}`;
+      } else {
+        valueCal.innerHTML += `${this.textContent}`;
+      }
+    }
+  }
+}
+
+// allBtn.forEach((thisBtn) => {
+//   thisBtn.addEventListener("click", () => {
+//     var result = 0;
+//     console.log(thisBtn.textContent);
+//     if (thisBtn.textContent === "=") {
 //       if (valueCal.textContent === "_") {
 //         alert("Vui lòng nhập dữ liệu");
 //       } else {
 //         result = eval(valueCal.textContent);
 //         valueCal.innerHTML = `${result}`;
 //       }
+//     } else if (thisBtn.textContent === "CLEAR") {
+//       valueCal.innerHTML = "_";
+//     } else {
+//       if (valueCal.textContent === "_") {
+//         // console.log(typeof valueCal.textContent);
+//         var valueCalReplaced = valueCal.textContent.replace(
+//           "_",
+//           thisBtn.textContent
+//         );
+//         // lưu ý khi biến đã xử lý backend thì phải đưa ra giao diện
+//         valueCal.innerHTML = valueCalReplaced;
+//       } else valueCal.innerText += `${thisBtn.textContent}`;
 //     }
-//       else {
-//         if (valueCal.textContent === "_") {
-//           // console.log(typeof valueCal.textContent);
-//           var valueCalReplaced = valueCal.textContent.replace(
-//             "_",
-//             dataCal[i].textContent
-//           );
-//           // lưu ý khi biến đã xử lý backend thì phải đưa ra giao diện
-//           valueCal.innerHTML = valueCalReplaced;
-//         } else valueCal.innerText += `${dataCal[i].textContent}`;
-//       }
-//   }
-// }
-
-allBtn.forEach((thisBtn) => {
-  thisBtn.addEventListener("click", () => {
-    var result = 0;
-    console.log(thisBtn.textContent);
-    if (thisBtn.textContent === "=") {
-      if (valueCal.textContent === "_") {
-        alert("Vui lòng nhập dữ liệu");
-      } else {
-        result = eval(valueCal.textContent);
-        valueCal.innerHTML = `${result}`;
-      }
-    } else if (thisBtn.textContent === "CLEAR") {
-      valueCal.innerHTML = "_";
-    } else {
-      if (valueCal.textContent === "_") {
-        // console.log(typeof valueCal.textContent);
-        var valueCalReplaced = valueCal.textContent.replace(
-          "_",
-          thisBtn.textContent
-        );
-        // lưu ý khi biến đã xử lý backend thì phải đưa ra giao diện
-        valueCal.innerHTML = valueCalReplaced;
-      } else valueCal.innerText += `${thisBtn.textContent}`;
-    }
-  });
-});
+//   });
+// });
+// nếu số thập phân lớn hơn 2 số thì rút gọn lại bằng toFixed(2).
+// nếu số thập phân cuối cừng bằng 0 thì loại bỏ.
