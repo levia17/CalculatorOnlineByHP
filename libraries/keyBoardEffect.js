@@ -30,11 +30,11 @@ export default function handleKeyboard() {
       var keycode = keycodeMapping[spanContent];
 
       // Kiểm tra xem có keycode tương ứng hay không
-      if (keycode !== undefined) {
-        // Gửi keycode tới ứng dụng hoặc thực hiện bất kỳ thao tác nào bạn muốn
-        console.log("Span content:", spanContent);
-        console.log("Keycode:", keycode);
-      }
+      // if (keycode !== undefined) {
+      //   // Gửi keycode tới ứng dụng hoặc thực hiện bất kỳ thao tác nào bạn muốn
+      //   console.log("Span content:", spanContent);
+      //   console.log("Keycode:", keycode);
+      // }
     });
   });
   window.addEventListener("keydown", function (event) {
