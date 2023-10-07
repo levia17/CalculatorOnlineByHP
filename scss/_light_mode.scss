@@ -10,6 +10,29 @@
     position: relative;
     display: grid;
     gap: 20px;
+    #advance_caculator {
+      span {
+        position: relative;
+        padding: 5px;
+        box-shadow: $light-shadow;
+        cursor: pointer;
+        user-select: none;
+        min-width: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1.5em;
+        color: #666;
+        border: 2px solid $light-border;
+        box-shadow: $shadow-2;
+        border-radius: 10px;
+        transition: active 0.01s;
+        &:active,
+        &.active {
+          box-shadow: $shadow-2-inset;
+        }
+      }
+    }
     #value {
       position: relative;
       grid-column: span 4;

@@ -26,6 +26,13 @@ for (var i = 0; i < allBtn.length; i++) {
     if (this.textContent === "CLEAR") {
       valueCal.innerHTML = "_";
       stringCal = "";
+    } 
+    // code mới được update
+    else if (this.textContent === "") {
+      alert(this.children[0].classList[1]);
+      if (this.children[0].classList.contains("fa-plus-minus")) {
+      }
+    // kết thúc code mới được update
     } else if (this.textContent === "=") {
       if (stringCal.textContent === "") {
         2;
@@ -53,36 +60,7 @@ for (var i = 0; i < allBtn.length; i++) {
         stringCal += this.textContent;
         valueCal.innerHTML += `${this.textContent}`;
       }
-      console.log(stringCal);
+      // console.log(stringCal);
     }
   }
 }
-
-// allBtn.forEach((thisBtn) => {
-//   thisBtn.addEventListener("click", () => {
-//     var result = 0;
-//     console.log(thisBtn.textContent);
-//     if (thisBtn.textContent === "=") {
-//       if (valueCal.textContent === "_") {
-//         alert("Vui lòng nhập dữ liệu");
-//       } else {
-//         result = eval(valueCal.textContent);
-//         valueCal.innerHTML = `${result}`;
-//       }
-//     } else if (thisBtn.textContent === "CLEAR") {
-//       valueCal.innerHTML = "_";
-//     } else {
-//       if (valueCal.textContent === "_") {
-//         // console.log(typeof valueCal.textContent);
-//         var valueCalReplaced = valueCal.textContent.replace(
-//           "_",
-//           thisBtn.textContent
-//         );
-//         // lưu ý khi biến đã xử lý backend thì phải đưa ra giao diện
-//         valueCal.innerHTML = valueCalReplaced;
-//       } else valueCal.innerText += `${thisBtn.textContent}`;
-//     }
-//   });
-// });
-// nếu số thập phân lớn hơn 2 số thì rút gọn lại bằng toFixed(2).
-// nếu số thập phân cuối cừng bằng 0 thì loại bỏ.
