@@ -35,7 +35,6 @@ for (var i = 0; i < allBtn.length; i++) {
     // kết thúc code mới được update
     } else if (this.textContent === "=") {
       if (stringCal.textContent === "") {
-        2;
         alert("Vui lòng nhập dữ liệu");
       } else {
         var result = eval(stringCal);
