@@ -27,6 +27,7 @@ let stringCal = "";
 for (let i = 0; i < allBtn.length; i++) {
   allBtn[i].addEventListener("click", eventClickCal);
   function eventClickCal() {
+    console.log(stringCal);
     if (this.textContent === "CLEAR") {
       valueCal.innerHTML = "_";
       stringCal = "";
@@ -40,10 +41,28 @@ for (let i = 0; i < allBtn.length; i++) {
           `sqrt(${stringCal})<br />` + sqrtMath(eval(stringCal));
       } else if (this.children[0].classList.contains("fa-superscript")) {
         valueCal.innerHTML += "^";
+      } else if (
+        this.children[0].classList.contains("fa-plus-minus") &&
+        valueCal.textContent !== "_"
+      ) {
+        if (
+          valueCal.textContent.includes("-") &&
+          valueCal.textContent.indexOf("-") === 0
+        ) {
+          valueCal.innerHTML = valueCal.textContent.substring(1);
+          stringCal = valueCal.textContent;
+        } else {
+          let strInput = Array.from(valueCal.textContent);
+          strInput.unshift("-");
+          const strFixed = strInput.join("");
+          valueCal.innerHTML = strFixed;
+          stringCal = -stringCal;
+        }
       }
     }
     // kết thúc code mới được update
     else if (this.textContent === "=") {
+      console.log(stringCal);
       if (valueCal.textContent === "_") {
         alert("Vui lòng nhập dữ liệu");
       } else if (valueCal.textContent.includes("^")) {
@@ -75,7 +94,6 @@ for (let i = 0; i < allBtn.length; i++) {
         stringCal += this.textContent;
         valueCal.innerHTML += `${this.textContent}`;
       }
-      // console.log(stringCal);
     }
   }
 }
