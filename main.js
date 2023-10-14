@@ -1,17 +1,21 @@
 import handlerDarkModeToggle from "./libraries/themes.js";
 import handleKeyboard from "./libraries/keyBoardEffect.js";
 import handleSoundEffect from "./libraries/soundEffect.js";
+import {
+  factorial,
+  sqrtMath,
+  exponentiation,
+} from "./libraries/functionForKeys.js";
 
 handlerDarkModeToggle();
 handleSoundEffect();
 handleKeyboard();
 
-var valueCal = document.querySelector("#value");
-var allBtn = document.querySelectorAll(".row span");
-// console.log(dataCal);
+const valueCal = document.querySelector("#value");
+const allBtn = document.querySelectorAll(".row span");
 
 // Khởi tạo biến ban đầu là _ xuất ra màn hình
-var currentValue = "_";
+let currentValue = "_";
 function curVar() {
   valueCal.innerHTML = currentValue;
 }
@@ -20,24 +24,36 @@ curVar();
 let stringCal = "";
 
 // Chức năng của các phím
-for (var i = 0; i < allBtn.length; i++) {
+for (let i = 0; i < allBtn.length; i++) {
   allBtn[i].addEventListener("click", eventClickCal);
   function eventClickCal() {
     if (this.textContent === "CLEAR") {
       valueCal.innerHTML = "_";
       stringCal = "";
-    } 
-    // code mới được update
-    else if (this.textContent === "") {
-      alert(this.children[0].classList[1]);
-      if (this.children[0].classList.contains("fa-plus-minus")) {
+    } else if (this.textContent === "!") {
+      valueCal.innerHTML = `fact(${valueCal.textContent}) <br /> ${factorial(
+        valueCal.textContent
+      )}`;
+    } else if (this.textContent === "") {
+      if (this.children[0].classList.contains("fa-square-root-variable")) {
+        valueCal.innerHTML =
+          `sqrt(${stringCal})<br />` + sqrtMath(eval(stringCal));
+      } else if (this.children[0].classList.contains("fa-superscript")) {
+        valueCal.innerHTML += "^";
       }
+    }
     // kết thúc code mới được update
-    } else if (this.textContent === "=") {
-      if (stringCal.textContent === "") {
+    else if (this.textContent === "=") {
+      if (valueCal.textContent === "_") {
         alert("Vui lòng nhập dữ liệu");
+      } else if (valueCal.textContent.includes("^")) {
+        const indexCube = valueCal.textContent.indexOf("^");
+        const baseVal = valueCal.textContent.substring(0, indexCube);
+        const cubeVal = valueCal.textContent.substring(indexCube + 1);
+        valueCal.innerHTML =
+          `pow(${baseVal},${cubeVal})<br />` + exponentiation(baseVal, cubeVal);
       } else {
-        var result = eval(stringCal);
+        const result = eval(stringCal);
         valueCal.innerHTML = `${result}`;
       }
     } else if (this.textContent === ":") {
@@ -48,7 +64,7 @@ for (var i = 0; i < allBtn.length; i++) {
       stringCal += "*";
     } else {
       if (valueCal.textContent === "_") {
-        var valueCalReplaced = valueCal.textContent.replace(
+        const valueCalReplaced = valueCal.textContent.replace(
           "_",
           this.textContent
         );
