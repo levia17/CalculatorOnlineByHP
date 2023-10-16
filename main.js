@@ -43,15 +43,27 @@ for (let i = 0; i < allBtn.length; i++) {
         stringCal = arrToString.replaceAll(",", "");
       }
     } else if (this.textContent === "!") {
-      valueCal.innerHTML = `fact(${valueCal.textContent}) <br /> ${factorial(
-        valueCal.textContent
-      )}`;
+      if ((stringCal == "")) {
+        alert(`ERROR`);
+        stringCal = "";
+      } else {
+        valueCal.innerHTML = `fact(${valueCal.textContent}) <br /> ${factorial(valueCal.textContent)}`;
+      }
     } else if (this.textContent === "") {
       if (this.children[0].classList.contains("fa-square-root-variable")) {
-        valueCal.innerHTML =
-          `sqrt(${stringCal})<br />` + sqrtMath(eval(stringCal));
+        if ((stringCal == "")) {
+          alert(`ERROR`);
+          stringCal = "";
+        } else {
+          valueCal.innerHTML =`sqrt(${stringCal})<br />` + sqrtMath(eval(stringCal));
+        }
       } else if (this.children[0].classList.contains("fa-superscript")) {
-        valueCal.innerHTML += "^";
+        if ((stringCal == "")) {
+          alert(`ERROR`);
+          stringCal = "";
+        } else {
+          valueCal.innerHTML += "^";
+        }
       } else if (
         this.children[0].classList.contains("fa-plus-minus") &&
         valueCal.textContent !== "_"
