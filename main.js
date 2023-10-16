@@ -31,6 +31,17 @@ for (let i = 0; i < allBtn.length; i++) {
     if (this.textContent === "CLEAR") {
       valueCal.innerHTML = "_";
       stringCal = "";
+    } else if (this.textContent === "DEL") {
+      if (valueCal.textContent.length == 1) {
+        curVar();
+        stringCal = "";
+      } else {
+        const stringToArr = valueCal.textContent.split("");
+        stringToArr.pop();
+        const arrToString = stringToArr.toString();
+        valueCal.innerHTML = `${arrToString.replaceAll(",", "")}`;
+        stringCal = arrToString.replaceAll(",", "");
+      }
     } else if (this.textContent === "!") {
       valueCal.innerHTML = `fact(${valueCal.textContent}) <br /> ${factorial(
         valueCal.textContent

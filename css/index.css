@@ -36,6 +36,28 @@ a {
   display: grid;
   gap: 20px;
 }
+.caculator .buttons #advance_caculator span {
+  position: relative;
+  padding: 5px;
+  box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  min-width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  color: #666;
+  border: 2px solid #edf1f4;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1), -5px -5px 10px #fff;
+  border-radius: 10px;
+  transition: active 0.01s;
+}
+.caculator .buttons #advance_caculator span:active, .caculator .buttons #advance_caculator span.active {
+  box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1), inset -5px -5px 10px #fff;
+}
 .caculator .buttons #value {
   position: relative;
   grid-column: span 4;
@@ -75,11 +97,10 @@ a {
   box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.1), inset -5px -5px 10px #fff;
 }
 .caculator .buttons span#clear {
-  grid-column: span 2;
   font-weight: bold;
   color: #f44336;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.3em;
 }
 .caculator .buttons span#clear:active {
   color: #31a935;
